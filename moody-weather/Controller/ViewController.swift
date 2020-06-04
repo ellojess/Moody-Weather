@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func neutralPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "It's Okay!", message: "There's always tomorrow!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "It's Okay!", message: "Tomorrow's another day!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Looking forward!", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
