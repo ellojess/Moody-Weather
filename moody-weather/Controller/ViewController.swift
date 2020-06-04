@@ -22,17 +22,31 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        locationManager.delegate = self
         
-        // ask user for location permission 
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
         weatherManager.delegate = self
-        
     }
-
+    @IBAction func happyPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Yay!", message: "It's a great day to be happy!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Thank you!", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    @IBAction func neutralPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "It's Okay!", message: "There's always tomorrow!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Looking forward!", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    @IBAction func sadPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "): there there", message: "It's okay to have off days", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Thanks", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
 
 }
 
