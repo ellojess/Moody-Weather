@@ -23,11 +23,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        locationManager.delegate = self
         
         // ask user for location permission 
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
+        weatherManager.delegate = self
         
     }
 
@@ -36,7 +38,6 @@ class ViewController: UIViewController {
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("got location data")
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
@@ -49,4 +50,19 @@ extension ViewController: CLLocationManagerDelegate {
         print(error)
     }
 }
+
+extension ViewController: WeatherManagerDelegate {
+    
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString
+            self.cityLabel.text = "Today's weath in \(weather.cityName) is"
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+}
+
 
