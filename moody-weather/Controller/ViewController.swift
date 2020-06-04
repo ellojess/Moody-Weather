@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var neutralButton: UIButton!
     @IBOutlet weak var sadButton: UIButton!
     
+    var weatherManager = WeatherManager()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
